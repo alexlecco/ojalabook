@@ -1,0 +1,11 @@
+rails new ojalabook
+rails generate scaffold status name content:text
+rake db:migrate
+git init
+git add .
+git commit -m "Project creation and adding status"
+git remote add origin https://github.com/alexlecco/ojalabook.git
+git push -u origin master
+--------------------------------------------------------------------------------
+instalamos bootstrap
+--------------------------------------------------------------------------------

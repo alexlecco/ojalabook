@@ -12,23 +12,36 @@
     <div class="container">
       <a href="#" class="navbar-brand">OjalaBook</a>
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Estados", statuses_path %></li>
+        <li class="active"><%= link_to "Estados", timeline_path %></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
           <li><%= link_to current_user.complete_name, edit_user_registration_path %></li>
-          <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "Cerrar sesión", destruir_path %></li>
         <% else %>
-          <li><%= link_to "Registrar", new_user_registration_path %></li>
-          <li><%= link_to "Iniciar sesión", new_user_session_path %></li>
+          <li><%= link_to "Registrar", registrar_path %></li>
+          <li><%= link_to "Iniciar sesión", comenzar_path %></li>
         <% end %>
       </ul>
     </div>
   </div>
 
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </div>
 

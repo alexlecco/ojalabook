@@ -17,6 +17,12 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
+  test "debe iniciar sesion para hacer un post" do
+    post :create, status: { content: "Hola Mundo" }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
   test "debería mostrar la nueva pagina cuando inicio sesion" do
     sign_in users(:ojala)
     get :new

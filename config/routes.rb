@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profile/show'
+
   devise_for :users
 
   devise_scope :user do
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   get 'timeline', to: 'statuses#index', as: :timeline
 
   root to: 'statuses#index'
+
+  get '/:id', to: 'profile#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
